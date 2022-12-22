@@ -188,7 +188,40 @@ TBD
 
 ## Pointers -> references
 
-TBD
+C
+
+```C
+void function_taking_pointer(const something_t *something)
+{
+    // Must be checked at runtime or otherwise
+    if (something == NULL)
+    {
+    }
+
+    foobarize(something->x);
+}
+
+void callsite()
+{
+    something_t something = { ... };
+    function_taking_pointer(&something);
+}
+```
+
+A C++ reference can never be null in the first place
+
+```C++
+void function_taking_pointer(const something_t &something)
+{
+    foobarize(something.x);
+}
+
+void callsite()
+{
+    something_t something = { ... };
+    function_taking_pointer(something);
+}
+```
 
 ## Nicer for loops
 
